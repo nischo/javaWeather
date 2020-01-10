@@ -7,6 +7,7 @@ import org.json.JSONObject;
 import java.io.*;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.util.Scanner;
 
 
 public class Main {
@@ -31,8 +32,34 @@ public class Main {
         }
     }
 
+    public static String readAPIfromFile(String filename){
+
+        String apiKey = "";
+        try {
+              File myFile = new File(filename);
+              Scanner myApi = new Scanner(myFile);
+              apiKey = myApi.nextLine();
+
+              myApi.close();
+
+            } catch (FileNotFoundException e) {
+              System.out.println("An error occurred.");
+              e.printStackTrace();
+            }
+            return apiKey;
+    }
+
     public static void main(String[] args) throws IOException, JSONException {
-        JSONObject json = readJsonFromUrl("http://api.openweathermap.org/data/2.5/weather?id=2891742&lang=de&units=metric&appid=14ca5d55f5def1a0b1bcb74d1806261b");
+
+        String apiKey = "";
+
+        /***
+         * read file with API Key
+         */
+        apiKey = readAPIfromFile("apiKey");
+
+
+        JSONObject json = readJsonFromUrl("http://api.openweathermap.org/data/2.5/weather?id=2891742&lang=de&units=metric&appid=" + apiKey);
 
         System.out.println(json.toString());
         System.out.println("*****************************");
