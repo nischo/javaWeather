@@ -1,0 +1,1 @@
+Weather information from console
