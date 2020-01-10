@@ -43,7 +43,7 @@ public class Main {
 
         System.out.println("Ort:              " + json.get("name"));
         System.out.println("Temperatur:       " + main.get("temp") + "°C");
-        System.out.println("Gefühlt:          " + main.get("temp") + "°C");
+        System.out.println("Gefühlt:          " + main.get("feels_like") + "°C");
         System.out.println("Luftfeuchtigkeit: " + main.get("humidity") + "%");
 
         System.out.println("Wetter:           " + weather.getJSONObject(0).getString("description"));
